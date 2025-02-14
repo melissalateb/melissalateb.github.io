@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon CV</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #e2e2e2, #f4f4f9);
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #008080;
+            padding-bottom: 15px;
+        }
+
+        .header img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            margin-right: 20px;
+            border: 4px solid #008080;
+            transition: transform 0.3s;
+        }
+
+        .header img:hover {
+            transform: scale(1.05);
+        }
+
+        .header h1 {
+            font-size: 40px;
+            color: #008080;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #495057;
+            margin-top: 40px;
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 5px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            width: 50px;
+            height: 3px;
+            background: #008080;
+        }
+
+        h3 {
+            font-size: 24px;
+            color: #343a40;
+            margin-top: 20px;
+            margin-bottom: 5px;
+        }
+
+        .contact-info,
+        .education,
+        .experience,
+        .skills {
+            margin-bottom: 30px;
+            padding: 10px;
+            border-left: 4px solid #008080;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .contact-info p,
+        .education p,
+        .experience p,
+        .skills p {
+            margin: 8px 0;
+            font-size: 18px;
+            color: #555;
+        }
+
+        .skills ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .skills li {
+            background: #008080;
+            color: white;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 20px;
+            font-size: 16px;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .skills li:hover {
+            background: #005f5f;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+        const cvData = {
+            name: "Melissa LATEB",
+            contact: {
+                email: "latebmelissa@gmail.com",
+                phone: "06 28 72 24 12",
+                address: "Ile-de-France",
+            },
+            education: [
+                {
+                    institution: "Sorbonne Université",
+                    degree: "Master 2 - STL",
+                    years: "2024 - 2025",
+                    description: `Le Master STL propose une formation avancée en sciences et technologies du logiciel. 
+                    Les modules incluent :
+                    - AAGA (Génération aléatoire)
+                    - PPC (Mathématiques, paradigme de programmation concurrente)
+                    - GPSTM (Gestion de projet en STM)
+                    - TAS (Typage et analyse statique)
+                    - DAAR (Algorithmes dans les applications web et mobiles)`
+                },
+                {
+                    institution: "CFA INSTA",
+                    degree: "Master 1 - Analyste DEVOPS",
+                    years: "2023 - 2024",
+                    description: `En Master 1 Analyste DevOps au CFA Insta, je me spécialise dans l'ingénierie logicielle et le développement informatique. 
+                    Grâce à des matières telles que l'algorithme avancé et l'ingénierie logicielle, j'apprends à optimiser les performances des systèmes informatiques. 
+                    Je maîtrise des technologies telles que React, Angular, Python, Java, Django, et Julia.`
+                },
+                {
+                    institution: "Université Paris-Est Créteil",
+                    degree: "Licence en Informatique",
+                    years: "2019 - 2023",
+                    description: `En Licence Informatique à l'UPEC, j'ai acquis une expertise pratique et théorique en modélisation de problèmes informatiques, développement d'algorithmes et conception de bases de données. 
+                    Ma formation inclut également des compétences en travail individuel, en travail d'équipe et en communication scientifique, renforcées par un enseignement important de l'anglais.`
+                },
+                {
+                    institution: "Université UMMTO",
+                    degree: "Licence 1 - Sciences et technologies",
+                    years: "2018 - 2019",
+                    description: "Formation générale en sciences et technologies, offrant une base solide en mathématiques et physique."
+                },
+                {
+                    institution: "Lycée El Khansa",
+                    degree: "Baccalauréat série mathématique",
+                    years: "2017 - 2018",
+                    description: "Diplôme de baccalauréat série mathématique, avec un focus sur les mathématiques avancées et les sciences physiques."
+                }
+            ],
+            experience: [
+                {
+                    company: "NUXLY",
+                    role: "Alternance - Développement informatique",
+                    years: "Septembre 2023 - Présent",
+                    description: `NUXLY est une entreprise de consulting IT spécialisée dans l'ERP Odoo. 
+                    En tant que développeur, je participe à la personnalisation et l'intégration d'Odoo pour divers clients, en améliorant la gestion des processus d'affaires. 
+                    Mes responsabilités incluent le développement de modules personnalisés, la résolution de problèmes techniques, 
+                    et la collaboration étroite avec les équipes clients pour garantir des solutions adaptées et efficaces.`
+                }
+            ],
+            skills: [
+                "HTML", "CSS", "JavaScript", "React", "Node.js", "Git", "Docker"
+            ],
+            image: "image.jpg" // Assurez-vous que le fichier image.jpg se trouve dans le même répertoire que ce fichier HTML
+        };
+
+        const App = () => {
+            return (
+                <div className="container">
+                    <div className="header">
+                        <img src={cvData.image} alt="Profile" />
+                        <h1>{cvData.name}</h1>
+                    </div>
+                    <div className="contact-info">
+                        <h2>Informations de contact</h2>
+                        <p>Email: {cvData.contact.email}</p>
+                        <p>Téléphone: {cvData.contact.phone}</p>
+                        <p>Adresse: {cvData.contact.address}</p>
+                    </div>
+                    <div className="education">
+                        <h2>Éducation</h2>
+                        {cvData.education.map((edu, index) => (
+                            <div key={index}>
+                                <h3>{edu.degree}, {edu.years}</h3>
+                                <p><strong>{edu.institution}</strong></p>
+                                <p>{edu.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="experience">
+                        <h2>Expérience professionnelle</h2>
+                        {cvData.experience.map((exp, index) => (
+                            <div key={index}>
+                                <h3>{exp.role}, {exp.years}</h3>
+                                <p><strong>{exp.company}</strong></p>
+                                <p>{exp.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="skills">
+                        <h2>Compétences</h2>
+                        <ul>
+                            {cvData.skills.map((skill, index) => (
+                                <li key={index}>{skill}</li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+            );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+
+</html>
